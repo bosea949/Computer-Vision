@@ -67,7 +67,7 @@ def build_vocabulary(image_paths, vocab_size):
   vocab = np.zeros((vocab_size,dim))
 
   #############################################################################
-  # TODO: YOUR CODE HERE                                                      #
+  #                             CODE HERE                                     #
   #############################################################################
     
   descriptors_stack=[]
@@ -85,7 +85,7 @@ def build_vocabulary(image_paths, vocab_size):
   
   return vocab
   #############################################################################
-  #                             END OF YOUR CODE                              #
+  #                             END OF CODE                                   #
   #############################################################################
 
 
@@ -147,9 +147,10 @@ def get_bags_of_sifts(image_paths, vocab_filename,tf_idf):
   # dummy features variable
   feats = []
 
-  #############################################################################
-  # TODO: YOUR CODE HERE                                                      #
-  #############################################################################
+ #############################################################################
+ #                             CODE HERE                                     #
+ #############################################################################
+    
 
   count=defaultdict(int)# A counter for the number images having the a given center in the image cluster 
   for index in range(len(image_paths)):
@@ -177,7 +178,7 @@ def get_bags_of_sifts(image_paths, vocab_filename,tf_idf):
     
                                                                        
   #############################################################################
-  #                             END OF YOUR CODE                              #
+  #                             END OF CODE                                   #
   #############################################################################
 
   return np.array(feats)
@@ -220,9 +221,10 @@ def nearest_neighbor_classify(train_image_feats, train_labels, test_image_feats,
           predicted category for each testing image
   """
   test_labels = []
-  #############################################################################
-  # TODO: YOUR CODE HERE                                                      #
-  #############################################################################
+ #############################################################################
+ #                             CODE HERE                                     #
+ #############################################################################
+
   def chi2(x,y):
     distance=sklearn_pairwise.chi2_kernel(x.reshape(1,-1),y.reshape(1,-1))
     return distance[0]
@@ -236,7 +238,7 @@ def nearest_neighbor_classify(train_image_feats, train_labels, test_image_feats,
 
   
   #############################################################################
-  #                             END OF YOUR CODE                              #
+  #                             END OF CODE                                   #
   #############################################################################
   return test_labels  
 
@@ -271,9 +273,10 @@ def svm_classify(train_image_feats, train_labels, test_image_feats):
   
 
 
-  #############################################################################
-  # TODO: YOUR CODE HERE                                                      #
-  #############################################################################
+ #############################################################################
+ #                             CODE HERE                                     #
+ #############################################################################
+
   
   
   svm=LinearSVC(random_state=0, tol=1e-3, loss='hinge', C=70,multi_class='ovr')
@@ -282,7 +285,7 @@ def svm_classify(train_image_feats, train_labels, test_image_feats):
   test_labels=svm.predict(test_image_feats)
   
   #############################################################################
-  #                             END OF YOUR CODE                              #
+  #                             END OF CODE                                   #
   #############################################################################
 
   return test_labels
