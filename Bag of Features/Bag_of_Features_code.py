@@ -49,21 +49,8 @@ def build_vocabulary(image_paths, vocab_size):
   -   vocab: This is a vocab_size x d numpy array (vocabulary). Each row is a
       cluster center / visual word
   """
-  # Load images from the training set. To save computation time, you don't
-  # necessarily need to sample from all images, although it would be better
-  # to do so. You can randomly sample the descriptors from each image to save
-  # memory and speed up the clustering. Or you can simply call vl_dsift with
-  # a large step size here, but a smaller step size in get_bags_of_sifts.
-  #
-  # For each loaded image, get some SIFT features. You don't have to get as
-  # many SIFT features as you will in get_bags_of_sift, because you're only
-  # trying to get a representative sample here.
-  #
-  # Once you have tens of thousands of SIFT features from many training
-  # images, cluster them with kmeans. The resulting centroids are now your
-  # visual word vocabulary.
   
-  dim = 128      # length of the SIFT descriptors that you are going to compute.
+  dim = 128      # length of the SIFT descriptors.
   vocab = np.zeros((vocab_size,dim))
 
   #############################################################################
